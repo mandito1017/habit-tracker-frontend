@@ -1,6 +1,6 @@
 "use client";
 
-import { useAppSelector } from "@/store/hooks";
+import { useAppSelector } from "../store/hooks";
 import HabitCard from "./HabitCard";
 
 export default function HabitList() {
@@ -30,8 +30,6 @@ export default function HabitList() {
           </p>
         </div>
       </div>
-
-      {/* Lista dinámica generada desde Redux */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {habits.map((habit, index) => (
           <HabitCard key={habit.id} habit={habit} index={index} />

@@ -22,6 +22,15 @@ export default function ProgressBar({ currentDays, targetDays = 66 }: ProgressBa
     return "text-red-400";
   };
 
+  const getLabel = () => {
+    if (percentage >= 100) return "¡Hábito formado! 🎉";
+    if (percentage >= 80) return "¡Casi! Sigue así 💪";
+    if (percentage >= 50) return "Más de la mitad 🔥";
+    if (percentage >= 33) return "Buen ritmo ⚡";
+    if (percentage >= 21) return "3 semanas — ¡Sigue! 🌱";
+    return "Comenzando...";
+  };
+
   return (
     <div className="w-full">
       <div className="flex items-center justify-between mb-2">
@@ -32,17 +41,15 @@ export default function ProgressBar({ currentDays, targetDays = 66 }: ProgressBa
           {currentDays} / {targetDays} días
         </span>
       </div>
-
       <div className="relative h-3 w-full bg-slate-800 rounded-full overflow-hidden">
         <div
           className={`h-full rounded-full bg-gradient-to-r ${getBarColor()} transition-all duration-700`}
           style={{ width: `${percentage}%` }}
         />
       </div>
-
       <div className="flex justify-between mt-2">
-        <span className={`text-xs ${getTextColor()}`}>
-          {currentDays >= targetDays ? "¡Hábito formado! 🎉" : "En progreso..."}
+        <span className={`text-xs font-medium ${getTextColor()}`}>
+          {getLabel()}
         </span>
         <span className="text-xs text-slate-500">
           {Math.max(0, targetDays - currentDays)} días restantes
