@@ -1,8 +1,8 @@
 "use client";
 
-import { Habit } from "@/store/slices/habitsSlice";
-import { useAppDispatch } from "@/store/hooks";
-import { updateHabit } from "@/store/slices/habitsSlice";
+import { Habit } from "../store/slices/habitsSlice";
+import { useAppDispatch } from "../store/hooks";
+import { updateHabit } from "../store/slices/habitsSlice";
 import ProgressBar from "./ProgressBar";
 
 interface HabitCardProps {
