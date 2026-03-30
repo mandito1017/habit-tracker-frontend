@@ -16,7 +16,7 @@ export default function HabitCard({ habit, index }: HabitCardProps) {
   const handleDone = async () => {
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch(`https://habit-tracker-backend-nine.vercel.app/api/habits/${habit.id}/done`, {
+      const response = await fetch(`https://habit-tracker-backend-amber.vercel.app/api/habits/${habit.id}/done`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

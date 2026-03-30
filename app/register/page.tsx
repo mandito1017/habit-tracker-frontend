@@ -18,7 +18,7 @@ export default function RegisterPage() {
     setLoading(true);
     setError("");
     try {
-      const response = await fetch("https://habit-tracker-backend-nine.vercel.app/api/auth/register", {
+      const response = await fetch("https://habit-tracker-backend-amber.vercel.app/api/auth/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, email, password }),

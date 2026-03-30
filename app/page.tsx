@@ -32,7 +32,7 @@ export default function Home() {
     setLoading(true);
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch("https://habit-tracker-backend-nine.vercel.app/api/habits", {
+      const response = await fetch("https://habit-tracker-backend-amber.vercel.app/api/habits", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

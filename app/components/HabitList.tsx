@@ -20,7 +20,7 @@ export default function HabitList() {
           return;
         }
 
-        const response = await fetch("https://habit-tracker-backend-nine.vercel.app/api/habits", {
+        const response = await fetch("https://habit-tracker-backend-amber.vercel.app/api/habits", {
           headers: {
             "Authorization": `Bearer ${token}`,
           },
