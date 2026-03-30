@@ -23,7 +23,6 @@ export default function HabitCard({ habit, index }: HabitCardProps) {
           "Authorization": `Bearer ${token}`,
         },
       });
-
       if (response.ok) {
         const updated = await response.json();
         dispatch(updateHabit({
@@ -61,21 +60,15 @@ export default function HabitCard({ habit, index }: HabitCardProps) {
             {habit.icon}
           </div>
           <div>
-            <h3 className="font-semibold text-white text-base">
-              {habit.name}
-            </h3>
-            <p className="text-slate-400 text-xs mt-0.5">
-              {habit.description}
-            </p>
+            <h3 className="font-semibold text-white text-base">{habit.name}</h3>
+            <p className="text-slate-400 text-xs mt-0.5">{habit.description}</p>
           </div>
         </div>
         <span className="text-xs px-2.5 py-1 rounded-full border bg-slate-800 text-slate-300 border-slate-700 whitespace-nowrap">
           {habit.category}
         </span>
       </div>
-
       <ProgressBar currentDays={habit.currentStreak} targetDays={habit.targetDays} />
-
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2 bg-slate-800 rounded-lg px-3 py-1.5">
           <span className="text-amber-400 text-sm">🔥</span>

@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import HabitList from "./components/HabitList";
 import { useAppDispatch } from "./store/hooks";
-import { setCredentials } from "./store/slices/authSlice";
 
 export default function Home() {
   const router = useRouter();
@@ -40,7 +39,6 @@ export default function Home() {
         },
         body: JSON.stringify({ name, description, category, icon, targetDays: 66 }),
       });
-
       if (response.ok) {
         setShowForm(false);
         setName("");
@@ -79,7 +77,6 @@ export default function Home() {
         <div className="mb-10">
           <h1 className="text-3xl font-bold text-white mb-2">Buenos días 👋</h1>
           <p className="text-slate-400">Pequeños pasos diarios crean grandes cambios.</p>
-
           <div className="mt-6 bg-slate-900 border border-slate-800 rounded-2xl px-5 py-4 flex gap-4 items-center">
             <span className="text-3xl">📖</span>
             <div>
@@ -91,7 +88,6 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Botón agregar hábito */}
         <div className="mb-6">
           <button
             onClick={() => setShowForm(!showForm)}
@@ -101,7 +97,6 @@ export default function Home() {
           </button>
         </div>
 
-        {/* Formulario agregar hábito */}
         {showForm && (
           <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 mb-8">
             <h3 className="text-white font-semibold text-lg mb-4">Nuevo hábito</h3>

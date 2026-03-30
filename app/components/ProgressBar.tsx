@@ -34,25 +34,19 @@ export default function ProgressBar({ currentDays, targetDays = 66 }: ProgressBa
   return (
     <div className="w-full">
       <div className="flex items-center justify-between mb-2">
-        <span className="text-xs text-slate-400 uppercase tracking-widest">
-          Progreso
-        </span>
+        <span className="text-xs text-slate-400 uppercase tracking-widest">Progreso</span>
         <span className={`text-sm font-bold ${getTextColor()}`}>
           {currentDays} / {targetDays} días
         </span>
       </div>
-
       <div className="relative h-3 w-full bg-slate-800 rounded-full overflow-hidden">
         <div
           className={`h-full rounded-full bg-gradient-to-r ${getBarColor()} transition-all duration-700`}
           style={{ width: `${percentage}%` }}
         />
       </div>
-
       <div className="flex justify-between mt-2">
-        <span className={`text-xs font-medium ${getTextColor()}`}>
-          {getLabel()}
-        </span>
+        <span className={`text-xs font-medium ${getTextColor()}`}>{getLabel()}</span>
         <span className="text-xs text-slate-500">
           {Math.max(0, targetDays - currentDays)} días restantes
         </span>

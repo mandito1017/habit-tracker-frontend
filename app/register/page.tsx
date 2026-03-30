@@ -23,14 +23,11 @@ export default function RegisterPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, email, password }),
       });
-
       const data = await response.json();
-
       if (!response.ok) {
         setError(data.message);
         return;
       }
-
       dispatch(setCredentials({ user: data.user, token: data.token }));
       localStorage.setItem("token", data.token);
       router.push("/");
@@ -44,7 +41,6 @@ export default function RegisterPage() {
   return (
     <main className="min-h-screen bg-slate-950 flex items-center justify-center px-4">
       <div className="w-full max-w-md bg-slate-900 border border-slate-800 rounded-2xl p-8">
-
         <div className="flex items-center gap-3 mb-8">
           <div className="w-10 h-10 rounded-xl bg-green-600 flex items-center justify-center text-xl">
             🌿
@@ -54,18 +50,14 @@ export default function RegisterPage() {
             <p className="text-slate-400 text-xs">Crea tu cuenta</p>
           </div>
         </div>
-
         {error && (
           <div className="bg-red-900/40 border border-red-700 text-red-300 text-sm px-4 py-3 rounded-xl mb-4">
             {error}
           </div>
         )}
-
         <div className="flex flex-col gap-4">
           <div>
-            <label className="text-slate-400 text-xs uppercase tracking-widest mb-2 block">
-              Nombre
-            </label>
+            <label className="text-slate-400 text-xs uppercase tracking-widest mb-2 block">Nombre</label>
             <input
               type="text"
               value={name}
@@ -74,11 +66,8 @@ export default function RegisterPage() {
               className="w-full bg-slate-800 border border-slate-700 text-white rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-green-500 transition-colors"
             />
           </div>
-
           <div>
-            <label className="text-slate-400 text-xs uppercase tracking-widest mb-2 block">
-              Email
-            </label>
+            <label className="text-slate-400 text-xs uppercase tracking-widest mb-2 block">Email</label>
             <input
               type="email"
               value={email}
@@ -87,11 +76,8 @@ export default function RegisterPage() {
               className="w-full bg-slate-800 border border-slate-700 text-white rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-green-500 transition-colors"
             />
           </div>
-
           <div>
-            <label className="text-slate-400 text-xs uppercase tracking-widest mb-2 block">
-              Contraseña
-            </label>
+            <label className="text-slate-400 text-xs uppercase tracking-widest mb-2 block">Contraseña</label>
             <input
               type="password"
               value={password}
@@ -100,7 +86,6 @@ export default function RegisterPage() {
               className="w-full bg-slate-800 border border-slate-700 text-white rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-green-500 transition-colors"
             />
           </div>
-
           <button
             onClick={handleRegister}
             disabled={loading}
@@ -108,7 +93,6 @@ export default function RegisterPage() {
           >
             {loading ? "Registrando..." : "Crear cuenta"}
           </button>
-
           <p className="text-slate-400 text-sm text-center">
             ¿Ya tienes cuenta?{" "}
             <a href="/login" className="text-green-400 hover:text-green-300 transition-colors">
