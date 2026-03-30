@@ -1,10 +1,53 @@
 "use client";
 
-import { useAppSelector } from "../store/hooks";
+import { useEffect } from "react";
+import { useAppSelector, useAppDispatch } from "../store/hooks";
+import { setHabits } from "../store/slices/habitsSlice";
 import HabitCard from "./HabitCard";
+import { useRouter } from "next/navigation";
 
 export default function HabitList() {
   const habits = useAppSelector((state) => state.habits.habits);
+  const dispatch = useAppDispatch();
+  const router = useRouter();
+
+  useEffect(() => {
+    const fetchHabits = async () => {
+      try {
+        const token = localStorage.getItem("token");
+        if (!token) {
+          router.push("/login");
+          return;
+        }
+        const response = await fetch("https://habit-tracker-backend-amber.vercel.app/api/habits", {
+          headers: {
+            "Authorization": `Bearer ${token}`,
+          },
+        });
+        if (response.status === 401) {
+          router.push("/login");
+          return;
+        }
+        const data = await response.json();
+        const formatted = data.map((habit: any) => ({
+          id: habit._id,
+          name: habit.name,
+          description: habit.description || "",
+          icon: habit.icon || "📌",
+          currentStreak: habit.streak || 0,
+          targetDays: habit.targetDays || 66,
+          createdAt: habit.createdAt || "",
+          category: habit.category || "General",
+          lastCompletedDate: habit.lastCompletedDate || null,
+          isCompleted: habit.isCompleted || false,
+        }));
+        dispatch(setHabits(formatted));
+      } catch (error) {
+        console.error("Error al obtener hábitos:", error);
+      }
+    };
+    fetchHabits();
+  }, []);
 
   if (habits.length === 0) {
     return (
